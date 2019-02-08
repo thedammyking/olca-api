@@ -1,0 +1,47 @@
+{
+  "name": "lifexone-single-sign-on",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "author": "Oluwadamilola Babalola",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "copy": "cpx  src/.env dist/",
+    "build": "babel src -d dist | npm run copy",
+    "dev": "cross-env NODE_ENV=development nodemon --exec \"npm run build && npm run serve\" --watch src ",
+    "serve": "node dist/index.js",
+    "start": "cross-env NODE_ENV=production | npm run build && npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lifexone",
+    "heroku",
+    "sign-on"
+  ],
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "cross-env": "^5.2.0",
+    "dotenv": "^4.0.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.0",
+    "node-fetch": "^2.3.0",
+    "pg": "^6.1.2",
+    "pretty-error": "^2.0.2",
+    "sequelize": "^3.30.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "cpx": "^1.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x",
+    "yarn": "1.x"
+  }
+}
