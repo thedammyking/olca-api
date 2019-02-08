@@ -6,7 +6,6 @@ import cors from "cors";
 import errorHandler from "errorhandler";
 import PrettyError from "pretty-error";
 import config from "./config";
-import models from "./models";
 import routes from "./routes";
 
 const ENV = config.environment;
