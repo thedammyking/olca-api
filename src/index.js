@@ -58,6 +58,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`The server is running at port ${port}/`);
+  console.log(`The server is running`);
 });
 /* eslint-enable no-console */

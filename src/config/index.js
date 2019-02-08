@@ -1,12 +1,14 @@
-import path from 'path';
-import dotenv from 'dotenv';
-require('dotenv').config({path: path.join(__dirname, '../', '.env') });
-export const environment = process.env.NODE_ENV || 'development';
+import path from "path";
+import dotenv from "dotenv";
+require("dotenv").config({ path: path.join(__dirname, "../", ".env") });
+export const environment = process.env.NODE_ENV || "development";
 export const port = process.env.PORT || 3000;
-export const databaseUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/database';
+export const mailgun_api_key = process.env.MAILGUN_KEY;
+export const mailgun_domain = process.env.MAILGUN_DOMAIN;
 
 export default {
   environment,
   port,
-  databaseUrl,
-}
+  mailgun_api_key,
+  mailgun_domain
+};
