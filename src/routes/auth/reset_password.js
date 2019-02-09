@@ -14,7 +14,14 @@ export default async function(req, res) {
       JSON.stringify({ users_password: req.body.password })
     ).then(res => res.json());
 
-    res.status(200).json(resp_two);
+    if (resp_one.status && resp_two.status) {
+      return res.status(200).json(resp_two);
+    }
+
+    return res.status(200).json({
+      status: false,
+      message: "Something went wrong, please try again"
+    });
   } catch (error) {
     console.log(error);
   }
