@@ -3,7 +3,6 @@ import Mailgun from "mailgun-js";
 import { mailgun_api_key, mailgun_domain } from "../../config";
 
 export default async function(req, res) {
-  console.log(mailgun_api_key);
   const mailgun = new Mailgun({
     apiKey: mailgun_api_key,
     domain: mailgun_domain
