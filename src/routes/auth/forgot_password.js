@@ -25,7 +25,7 @@ export default async function(req, res) {
       subject: "Password Reset",
       text: `
         Please click on the link below to reset your passowrd \n
-        http://127.0.0.1:5500/reset.html?token=${data.data.token}
+        https://olca.netlify.com//reset.html?token=${data.data.token}
         \n
         Disregard this mail if you did not request for password reset\n
       `
