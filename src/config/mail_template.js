@@ -868,7 +868,7 @@ export function appreciate(name) {
                                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="fullCenter">
                                                     <tr>
                                                         <td width="100%" align="left" style="font-size:13px; color:#161619; font-family:'Quicksand', sans-serif; font-weight:400; line-height:24px;">
-                                                            Hi, ${name}}<br/>
+                                                            Hi, ${name}<br/>
                                                             Thank you for registering on OLCA, we're super excited to have you here!.<br/>
                                                             Now you can access products and services from OLCA.<br/><br/>
     

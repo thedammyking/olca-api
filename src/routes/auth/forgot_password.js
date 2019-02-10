@@ -9,6 +9,10 @@ export default async function(req, res) {
     domain: mailgun_domain
   });
 
+  const redirect = req.body.redirect;
+
+  delete req.body.redirect;
+
   try {
     const data = await p_two_req(
       "checkemail",
@@ -34,12 +38,14 @@ export default async function(req, res) {
       to: req.body.email,
       subject: "Password Reset",
       html: passwordReset(
-        `http://accounts.olcang.com/reset.html?token=${data.data.token}`
+        `http://accounts.olcang.com/reset.html?token=${
+          data.data.token
+        }&redirect=${redirect}`
       )
     };
 
     return mailgun.messages().send(mail_data, (error, body) => {
-      return res.status(200).json(body);
+      return res.status(200).json(data);
     });
   } catch (error) {
     return res.status(200).json({

@@ -51,7 +51,7 @@ export default async function(req, res) {
       const mail_data = {
         from: "Olusola Lanre Coaching Academy(O.L.C.A) <no-reply@olcang.com>",
         to: req.body.email,
-        subject: "Welcome",
+        subject: "Welcome on board",
         html: appreciate(req.body.firstname)
       };
 
