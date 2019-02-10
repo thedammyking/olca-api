@@ -23,6 +23,9 @@ export default async function(req, res) {
       message: "User does not exist"
     });
   } catch (error) {
-    console.log(error);
+    return res.status(200).json({
+      status: false,
+      message: `Something went wrong, please try again`
+    });
   }
 }

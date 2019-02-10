@@ -1,6 +1,7 @@
 import { p_two_req, p_one_req } from "../../config/agent";
 import Mailgun from "mailgun-js";
 import { mailgun_api_key, mailgun_domain } from "../../config";
+import { passwordReset } from "../../config/mail_template";
 
 export default async function(req, res) {
   const mailgun = new Mailgun({
@@ -32,18 +33,18 @@ export default async function(req, res) {
       from: "Olusola Lanre Coaching Academy(O.L.C.A) <no-reply@olcang.com>",
       to: req.body.email,
       subject: "Password Reset",
-      text: `
-        Please click on the link below to reset your passowrd \n
-        http://accounts.olcang.com/reset.html?token=${data.data.token}
-        \n
-        Disregard this mail if you did not request for password reset\n
-      `
+      html: passwordReset(
+        `http://accounts.olcang.com/reset.html?token=${data.data.token}`
+      )
     };
 
     return mailgun.messages().send(mail_data, (error, body) => {
       return res.status(200).json(body);
     });
   } catch (error) {
-    console.log(error);
+    return res.status(200).json({
+      status: false,
+      message: `Something went wrong, please try again`
+    });
   }
 }

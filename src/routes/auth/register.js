@@ -1,6 +1,14 @@
 import { p_one_req, p_two_req } from "../../config/agent";
+import Mailgun from "mailgun-js";
+import { mailgun_api_key, mailgun_domain } from "../../config";
+import { appreciate } from "../../config/mail_template";
 
 export default async function(req, res) {
+  const mailgun = new Mailgun({
+    apiKey: mailgun_api_key,
+    domain: mailgun_domain
+  });
+
   const req_body_one = {
     users_name: `${req.body.firstname} ${req.body.lastname}`,
     users_email: req.body.email,
@@ -39,8 +47,24 @@ export default async function(req, res) {
       JSON.stringify(req.body)
     ).then(res => res.json());
 
+    if (res_one.status && res_two.status) {
+      const mail_data = {
+        from: "Olusola Lanre Coaching Academy(O.L.C.A) <no-reply@olcang.com>",
+        to: req.body.email,
+        subject: "Welcome",
+        html: appreciate(req.body.firstname)
+      };
+
+      return mailgun.messages().send(mail_data, (error, body) => {
+        return res.status(200).json(res_two);
+      });
+    }
+
     return res.status(200).json(res_two);
   } catch (error) {
-    console.log(error);
+    return res.status(200).json({
+      status: false,
+      message: `Something went wrong, please try again`
+    });
   }
 }
