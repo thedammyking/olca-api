@@ -12,7 +12,8 @@
     "dev": "cross-env NODE_ENV=development nodemon --exec \"npm run build && npm run serve\" --watch src ",
     "serve": "node dist/index.js",
     "start": "cross-env NODE_ENV=production | npm run build && npm run serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "keywords": [
     "lifexone",
@@ -44,5 +45,6 @@
     "node": "10.x",
     "npm": "6.x",
     "yarn": "1.x"
-  }
+  },
+  "heroku-run-build-script": true
 }
