@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 export const p_one_req = (uri, method, body) =>
-  fetch(`https://lifexone.org/coachme/api/auth/${uri}`, {
+  fetch(`http://coach-meonline.com/users/api/auth/${uri}`, {
     method,
     headers: {
       "Content-Type": "application/json"
