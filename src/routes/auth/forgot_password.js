@@ -45,7 +45,7 @@ export default async function(req, res) {
     };
 
     return mailgun.messages().send(mail_data, (error, body) => {
-      return res.status(200).json(data);
+      return res.status(200).json({status: true, ...body});
     });
   } catch (error) {
     return res.status(200).json({
